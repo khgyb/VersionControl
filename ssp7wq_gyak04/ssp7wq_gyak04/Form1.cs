@@ -94,9 +94,13 @@ namespace ssp7wq_gyak04
                 values[szamlalo, 5] = f.Code;
                 values[szamlalo, 6] = f.Code;
                 values[szamlalo, 7] = f.Code;
-                values[szamlalo, 8] = "";
+                values[szamlalo, 8] = (int.Parse(GetCell(szamlalo,8))*1000000/int.Parse(GetCell(szamlalo,7))).ToString();
                 szamlalo++;
             }
+
+            xlSheet.get_Range(
+             GetCell(2, 1),
+             GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
         }
 
         private string GetCell(int x, int y)
