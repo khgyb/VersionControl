@@ -95,7 +95,7 @@ namespace ssp7wq_gyak04
                 values[szamlalo, 5] = f.NumberOfRooms;
                 values[szamlalo, 6] = f.FloorArea;
                 values[szamlalo, 7] = f.Price;
-                values[szamlalo, 8] = 
+                values[szamlalo, 8] = ""
                 szamlalo++;
             }
 
