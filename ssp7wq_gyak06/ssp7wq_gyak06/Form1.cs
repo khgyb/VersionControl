@@ -17,13 +17,53 @@ namespace ssp7wq_gyak06
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
-            RefreshData();
+
+            
+
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var result = response.GetCurrenciesResult;
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+            //MessageBox.Show(result);
+            foreach (XmlElement item in xml.DocumentElement)
+            {
+                int count = 0;
+                do
+                {
+                    string curr = "";
+                    var childElement = (XmlElement)item.ChildNodes[count];
+                    curr = childElement.InnerText;
+                    Currencies.Add(curr);
+                    count++;
+                } while (count<75);//nincs meg, hogy hány elemű a tömb, de enélkül nem futna a kód
+
+                
+                
+            }
 
             dataGridView1.DataSource = Rates;
             chart1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
+
+            var series = chart1.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            chart1.Legends[0].Enabled = false;
+            var chartarea = chart1.ChartAreas[0];
+            chartarea.AxisX.MajorGrid.Enabled = false;
+            chartarea.AxisY.MajorGrid.Enabled = false;
+            chartarea.AxisY.IsStartedFromZero = false;
+
+            RefreshData();
         }
 
         public void start()
@@ -40,6 +80,7 @@ namespace ssp7wq_gyak06
 
             var xml = new XmlDocument();
             xml.LoadXml(result);
+            
 
             foreach (XmlElement item in xml.DocumentElement)
             {
@@ -49,6 +90,8 @@ namespace ssp7wq_gyak06
                 rate.Date = DateTime.Parse(item.GetAttribute("date"));
 
                 var childElement = (XmlElement)item.ChildNodes[0];
+                if (childElement == null)
+                    continue;
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
@@ -58,20 +101,12 @@ namespace ssp7wq_gyak06
                     rate.Value = value / unit;
                 }
 
-                var series = chart1.Series[0];
-                series.ChartType = SeriesChartType.Line;
-                series.XValueMember = "Date";
-                series.YValueMembers = "Value";
-                series.BorderWidth = 2;
-
-                chart1.Legends[0].Enabled = false;
-                var chartarea = chart1.ChartAreas[0];
-                chartarea.AxisX.MajorGrid.Enabled = false;
-                chartarea.AxisY.MajorGrid.Enabled = false;
-                chartarea.AxisY.IsStartedFromZero = false;
+                
 
 
             }
+
+
         }
         private void RefreshData()
         {
