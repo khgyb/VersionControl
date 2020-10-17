@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 
 namespace ssp7wq_gyak06
@@ -21,6 +22,7 @@ namespace ssp7wq_gyak06
             InitializeComponent();
             start();
             dataGridView1.DataSource = Rates;
+            chart1.DataSource = Rates;
         }
 
         public void start()
@@ -54,6 +56,19 @@ namespace ssp7wq_gyak06
                 {
                     rate.Value = value / unit;
                 }
+
+                var series = chart1.Series[0];
+                series.ChartType = SeriesChartType.Line;
+                series.XValueMember = "Date";
+                series.YValueMembers = "Value";
+                series.BorderWidth = 2;
+
+                chart1.Legends[0].Enabled = false;
+                var chartarea = chart1.ChartAreas[0];
+                chartarea.AxisX.MajorGrid.Enabled = false;
+                chartarea.AxisY.MajorGrid.Enabled = false;
+                chartarea.AxisY.IsStartedFromZero = false;
+
 
             }
         }
