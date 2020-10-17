@@ -1,4 +1,5 @@
-﻿using ssp7wq_gyak06.MnbServiceReference;
+﻿using ssp7wq_gyak06.Entities;
+using ssp7wq_gyak06.MnbServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,12 @@ namespace ssp7wq_gyak06
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates = new BindingList<RateData>();
         public Form1()
         {
             InitializeComponent();
             start();
+            dataGridView1.DataSource = Rates;
         }
 
         private void start()
