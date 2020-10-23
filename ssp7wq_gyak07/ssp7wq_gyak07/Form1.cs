@@ -103,5 +103,12 @@ namespace ssp7wq_gyak07
             }
             return deathProbabilities;
         }
+
+        private void SimStep(int year, Person person)
+        {
+            if (!person.IsAlive) return;
+            byte age = (byte)(year - person.BirthYear);
+            double p
+        }
     }
 }
