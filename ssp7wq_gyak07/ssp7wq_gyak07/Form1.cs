@@ -17,6 +17,8 @@ namespace ssp7wq_gyak07
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
+
+        Random rng = new Random(1377);
         public Form1()
         {
             InitializeComponent();
