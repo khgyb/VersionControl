@@ -32,7 +32,7 @@ namespace ssp7wq_gyak07
                 
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    // Ide jön a szimulációs lépés
+                    SimStep(year, Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -108,7 +108,25 @@ namespace ssp7wq_gyak07
         {
             if (!person.IsAlive) return;
             byte age = (byte)(year - person.BirthYear);
-            double p
+            double pDeath = (from x in DeathProbabilities
+                             where x.Gender == person.Gender && x.Age == age
+                             select x.P).FirstOrDefault();
+            if (rng.NextDouble() <= pDeath)
+                person.IsAlive = false;
+            if (person.IsAlive && person.Gender == Gender.Female)
+            {
+                double pBirth = (from x in BirthProbabilities
+                                 where x.Age == age
+                                 select x.P).FirstOrDefault();
+                if (rng.NextDouble() <=pBirth)
+                {
+                    Person újszülött = new Person();
+                    újszülött.BirthYear = year;
+                    újszülött.NbrOfChildren = 0;
+                    újszülött.Gender=(Gender)rng.Next(1,3);
+                    Population.Add(újszülött);
+                }
+            }
         }
     }
 }
