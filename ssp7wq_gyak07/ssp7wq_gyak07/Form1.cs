@@ -27,9 +27,14 @@ namespace ssp7wq_gyak07
             BirthProbabilities = GetBirthProbabilities(@"C:\tmp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\tmp\halál.csv");
 
-            for (int year = 2005; year <= 2024; year++)
+        }
+
+        private void Simulation()
+        {
+            int zaroev = (int)LastYearnumericUpDown.Value;
+            for (int year = 2005; year <= zaroev; year++)
             {
-                
+
                 for (int i = 0; i < Population.Count; i++)
                 {
                     SimStep(year, Population[i]);
@@ -44,7 +49,6 @@ namespace ssp7wq_gyak07
                 Console.WriteLine(
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
             }
-
         }
 
         public List<Person> GetPopulation(string csvpath)
@@ -127,6 +131,11 @@ namespace ssp7wq_gyak07
                     Population.Add(újszülött);
                 }
             }
+        }
+
+        private void b_start_Click(object sender, EventArgs e)
+        {
+            Simulation();
         }
     }
 }
