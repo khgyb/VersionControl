@@ -17,6 +17,8 @@ namespace ssp7wq_gyak07
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
+        List<Person> Males = new List<Person>();
+        List<Person> Females = new List<Person>();
 
         Random rng = new Random(1234);
         public Form1()
@@ -38,16 +40,29 @@ namespace ssp7wq_gyak07
                 for (int i = 0; i < Population.Count; i++)
                 {
                     SimStep(year, Population[i]);
-                }
 
+                    if (Population[i].Gender==Gender.Male)
+                    {
+                        Males.Add(Population[i]);
+                    }
+                    else if (Population[i].Gender == Gender.Female)
+                    {
+                        Females.Add(Population[i]);
+                    }
+                }
+                /*
                 int nbrOfMales = (from x in Population
                                   where x.Gender == Gender.Male && x.IsAlive
                                   select x).Count();
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
+                
                 Console.WriteLine(
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+                */
+                richTextBox1.AppendText(Environment.NewLine + "Szimulációs év?" + year + "\n" + "\t" + "Fiúk:" + Males.Count + "\n" + "\t" + "Lányok:" + Females.Count);
+                //richTextBox1.Text=string.Format("Szimulációs év?" + year + "\n" + "\t" + "Fiúk:" + Males.Count + "\n" + "\t" + "Lányok:" + Females.Count + "\n" + "\n" + "\n" + "\n");
             }
         }
 
@@ -135,7 +150,27 @@ namespace ssp7wq_gyak07
 
         private void b_start_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
+            Males.Clear();
+            Females.Clear();
             Simulation();
         }
+
+        private void b_browse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog()==DialogResult.OK)
+            {
+                textBox1.Text = ofd.FileName;
+                
+            }
+            else
+            {
+                return;
+            }
+        }
+
+
     }
 }
