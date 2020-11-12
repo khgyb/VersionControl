@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ssp7wq_gyak08.Entities
 {
-    public class CarFactory : IToyFactory
+    class CarFactory : IToyFactory
     {
         public Toy Createnew()
         {
