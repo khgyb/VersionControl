@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace ssp7wq_gyak08.Entities
 {
-    public class BallFactory : IToyFactory
+    public class CarFactory : IToyFactory
     {
         public Toy Createnew()
         {
-            return new Ball();
+            return new Car();
         }
     }
 }
