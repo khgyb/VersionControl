@@ -69,7 +69,10 @@ namespace ssp7wq_gyak08
 
         private void btn_ball_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory()
+            {
+                BallColor = btn_color.BackColor
+            };
         }
         private void DisplayNext()
         {
