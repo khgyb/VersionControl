@@ -35,11 +35,13 @@
             this.btn_car = new System.Windows.Forms.Button();
             this.btn_ball = new System.Windows.Forms.Button();
             this.lbl_next = new System.Windows.Forms.Label();
+            this.btn_color = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.btn_color);
             this.mainPanel.Controls.Add(this.lbl_next);
             this.mainPanel.Controls.Add(this.btn_ball);
             this.mainPanel.Controls.Add(this.btn_car);
@@ -89,6 +91,16 @@
             this.lbl_next.TabIndex = 2;
             this.lbl_next.Text = "Coming next:";
             // 
+            // btn_color
+            // 
+            this.btn_color.BackColor = System.Drawing.Color.Red;
+            this.btn_color.Location = new System.Drawing.Point(182, 79);
+            this.btn_color.Name = "btn_color";
+            this.btn_color.Size = new System.Drawing.Size(96, 23);
+            this.btn_color.TabIndex = 3;
+            this.btn_color.UseVisualStyleBackColor = false;
+            this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -111,6 +123,7 @@
         private System.Windows.Forms.Label lbl_next;
         private System.Windows.Forms.Button btn_ball;
         private System.Windows.Forms.Button btn_car;
+        private System.Windows.Forms.Button btn_color;
     }
 }
 

@@ -76,9 +76,20 @@ namespace ssp7wq_gyak08
             if (_nextToy != null)
                 Controls.Remove(_nextToy);
             _nextToy = Factory.Createnew();
-            _nextToy.Top = lbl_next.Top + 10;
-            _nextToy.Left = lbl_next.Left + 20;
+            _nextToy.Top = lbl_next.Top;
+            _nextToy.Left = lbl_next.Left;
             Controls.Add(_nextToy);
+        }
+
+        private void btn_color_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
         }
     }
 }
