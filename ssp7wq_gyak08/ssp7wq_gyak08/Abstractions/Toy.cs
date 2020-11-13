@@ -15,6 +15,7 @@ namespace ssp7wq_gyak08.Abstractions
             AutoSize = false;
             Width = 50;
             Height = Width;
+            Top = 120;
             Paint += Toy_Paint;
         }
 

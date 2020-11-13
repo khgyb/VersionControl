@@ -30,17 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btn_color = new System.Windows.Forms.Button();
+            this.lbl_next = new System.Windows.Forms.Label();
+            this.btn_ball = new System.Windows.Forms.Button();
+            this.btn_car = new System.Windows.Forms.Button();
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
-            this.btn_car = new System.Windows.Forms.Button();
-            this.btn_ball = new System.Windows.Forms.Button();
-            this.lbl_next = new System.Windows.Forms.Label();
-            this.btn_color = new System.Windows.Forms.Button();
+            this.btn_present = new System.Windows.Forms.Button();
+            this.ribbon_color = new System.Windows.Forms.Button();
+            this.box_color = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.box_color);
+            this.mainPanel.Controls.Add(this.ribbon_color);
+            this.mainPanel.Controls.Add(this.btn_present);
             this.mainPanel.Controls.Add(this.btn_color);
             this.mainPanel.Controls.Add(this.lbl_next);
             this.mainPanel.Controls.Add(this.btn_ball);
@@ -49,6 +55,45 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(793, 442);
             this.mainPanel.TabIndex = 0;
+            // 
+            // btn_color
+            // 
+            this.btn_color.BackColor = System.Drawing.Color.Red;
+            this.btn_color.Location = new System.Drawing.Point(164, 79);
+            this.btn_color.Name = "btn_color";
+            this.btn_color.Size = new System.Drawing.Size(96, 23);
+            this.btn_color.TabIndex = 3;
+            this.btn_color.UseVisualStyleBackColor = false;
+            this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
+            // 
+            // lbl_next
+            // 
+            this.lbl_next.AutoSize = true;
+            this.lbl_next.Location = new System.Drawing.Point(410, 40);
+            this.lbl_next.Name = "lbl_next";
+            this.lbl_next.Size = new System.Drawing.Size(89, 17);
+            this.lbl_next.TabIndex = 2;
+            this.lbl_next.Text = "Coming next:";
+            // 
+            // btn_ball
+            // 
+            this.btn_ball.Location = new System.Drawing.Point(164, 23);
+            this.btn_ball.Name = "btn_ball";
+            this.btn_ball.Size = new System.Drawing.Size(96, 50);
+            this.btn_ball.TabIndex = 1;
+            this.btn_ball.Text = "BALL";
+            this.btn_ball.UseVisualStyleBackColor = true;
+            this.btn_ball.Click += new System.EventHandler(this.btn_ball_Click);
+            // 
+            // btn_car
+            // 
+            this.btn_car.Location = new System.Drawing.Point(36, 23);
+            this.btn_car.Name = "btn_car";
+            this.btn_car.Size = new System.Drawing.Size(96, 50);
+            this.btn_car.TabIndex = 0;
+            this.btn_car.Text = "CAR";
+            this.btn_car.UseVisualStyleBackColor = true;
+            this.btn_car.Click += new System.EventHandler(this.btn_car_Click);
             // 
             // createTimer
             // 
@@ -62,44 +107,35 @@
             this.conveyorTimer.Interval = 10;
             this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
             // 
-            // btn_car
+            // btn_present
             // 
-            this.btn_car.Location = new System.Drawing.Point(36, 23);
-            this.btn_car.Name = "btn_car";
-            this.btn_car.Size = new System.Drawing.Size(96, 50);
-            this.btn_car.TabIndex = 0;
-            this.btn_car.Text = "CAR";
-            this.btn_car.UseVisualStyleBackColor = true;
-            this.btn_car.Click += new System.EventHandler(this.btn_car_Click);
+            this.btn_present.Location = new System.Drawing.Point(288, 23);
+            this.btn_present.Name = "btn_present";
+            this.btn_present.Size = new System.Drawing.Size(96, 50);
+            this.btn_present.TabIndex = 4;
+            this.btn_present.Text = "PRESENT";
+            this.btn_present.UseVisualStyleBackColor = true;
+            this.btn_present.Click += new System.EventHandler(this.btn_present_Click);
             // 
-            // btn_ball
+            // ribbon_color
             // 
-            this.btn_ball.Location = new System.Drawing.Point(182, 23);
-            this.btn_ball.Name = "btn_ball";
-            this.btn_ball.Size = new System.Drawing.Size(96, 50);
-            this.btn_ball.TabIndex = 1;
-            this.btn_ball.Text = "BALL";
-            this.btn_ball.UseVisualStyleBackColor = true;
-            this.btn_ball.Click += new System.EventHandler(this.btn_ball_Click);
+            this.ribbon_color.BackColor = System.Drawing.Color.Yellow;
+            this.ribbon_color.Location = new System.Drawing.Point(288, 108);
+            this.ribbon_color.Name = "ribbon_color";
+            this.ribbon_color.Size = new System.Drawing.Size(96, 23);
+            this.ribbon_color.TabIndex = 5;
+            this.ribbon_color.UseVisualStyleBackColor = false;
+            this.ribbon_color.Click += new System.EventHandler(this.ribbon_color_Click);
             // 
-            // lbl_next
+            // box_color
             // 
-            this.lbl_next.AutoSize = true;
-            this.lbl_next.Location = new System.Drawing.Point(390, 40);
-            this.lbl_next.Name = "lbl_next";
-            this.lbl_next.Size = new System.Drawing.Size(89, 17);
-            this.lbl_next.TabIndex = 2;
-            this.lbl_next.Text = "Coming next:";
-            // 
-            // btn_color
-            // 
-            this.btn_color.BackColor = System.Drawing.Color.Red;
-            this.btn_color.Location = new System.Drawing.Point(182, 79);
-            this.btn_color.Name = "btn_color";
-            this.btn_color.Size = new System.Drawing.Size(96, 23);
-            this.btn_color.TabIndex = 3;
-            this.btn_color.UseVisualStyleBackColor = false;
-            this.btn_color.Click += new System.EventHandler(this.btn_color_Click);
+            this.box_color.BackColor = System.Drawing.Color.Red;
+            this.box_color.Location = new System.Drawing.Point(288, 79);
+            this.box_color.Name = "box_color";
+            this.box_color.Size = new System.Drawing.Size(96, 23);
+            this.box_color.TabIndex = 6;
+            this.box_color.UseVisualStyleBackColor = false;
+            this.box_color.Click += new System.EventHandler(this.box_color_Click);
             // 
             // Form1
             // 
@@ -124,6 +160,9 @@
         private System.Windows.Forms.Button btn_ball;
         private System.Windows.Forms.Button btn_car;
         private System.Windows.Forms.Button btn_color;
+        private System.Windows.Forms.Button box_color;
+        private System.Windows.Forms.Button ribbon_color;
+        private System.Windows.Forms.Button btn_present;
     }
 }
 

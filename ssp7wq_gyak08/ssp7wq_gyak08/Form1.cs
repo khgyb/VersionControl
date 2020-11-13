@@ -74,17 +74,49 @@ namespace ssp7wq_gyak08
                 BallColor = btn_color.BackColor
             };
         }
+
         private void DisplayNext()
         {
             if (_nextToy != null)
                 Controls.Remove(_nextToy);
             _nextToy = Factory.Createnew();
-            _nextToy.Top = lbl_next.Top;
+            _nextToy.Top = lbl_next.Top + lbl_next.Height + 20;
             _nextToy.Left = lbl_next.Left;
             Controls.Add(_nextToy);
         }
 
         private void btn_color_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
+        }
+
+        private void btn_present_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory()
+            {
+                BoxColor = box_color.BackColor,
+                RibbonColor=ribbon_color.BackColor
+            };
+        }
+
+        private void box_color_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
+        }
+
+        private void ribbon_color_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
             var colorPicker = new ColorDialog();
