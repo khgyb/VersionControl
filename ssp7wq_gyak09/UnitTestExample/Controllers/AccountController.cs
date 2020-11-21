@@ -22,23 +22,25 @@ namespace UnitTestExample.Controllers
 
         public Account Register(string email, string password)
         {
-            if(!ValidateEmail(email))
+            if (!ValidateEmail(email))
                 throw new ValidationException(
                     "A megadott e-mail cím nem megfelelő!");
-            if(!ValidateEmail(email))
-                throw new ValidationException(
-                    "A megadottt jelszó nem megfelelő!\n" +
-                    "A jelszó legalább 8 karakter hosszú kell legyen, csak az angol ABC betűiből és számokból állhat, és tartalmaznia kell legalább egy kisbetűt, egy nagybetűt és egy számot.");
-
-            var account = new Account()
+            if (!ValidatePassword(password))
             {
-                Email = email,
-                Password = password
-            };
+                var account = new Account()
+                {
+                    Email = email,
+                    Password = password
+                };
 
-            var newAccount = AccountManager.CreateAccount(account);
+                var newAccount = AccountManager.CreateAccount(account);
 
-            return newAccount;
+                return newAccount;
+            }
+
+            throw new ValidationException(
+               "A megadottt jelszó nem megfelelő!\n" +
+               "A jelszó legalább 8 karakter hosszú kell legyen, csak az angol ABC betűiből és számokból állhat, és tartalmaznia kell legalább egy kisbetűt, egy nagybetűt és egy számot.");
         }
 
         public bool ValidateEmail(string email)
