@@ -39,6 +39,8 @@ namespace ssp7wq_gyak10
                 gc.AddPlayer(nbrOfSteps);
             }
             gc.Start(true);
+
+
         }
 
         private void Gc_GameOver(object sender)
@@ -58,6 +60,7 @@ namespace ssp7wq_gyak10
             {
                 winnerBrain = winners.FirstOrDefault().Brain.Clone();
                 gc.GameOver -= Gc_GameOver;
+                button1.Visible = true;
                 return;
             }
 
@@ -76,6 +79,16 @@ namespace ssp7wq_gyak10
                     gc.AddPlayer(b.Mutate());
             }
             gc.Start();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gc.ResetCurrentLevel();
+            gc.AddPlayer(winnerBrain.Clone());
+            gc.AddPlayer();
+            ga.Focus();
+            gc.Start(true);
         }
     }
 }
